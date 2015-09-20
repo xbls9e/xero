@@ -1,8 +1,8 @@
 
-//2 diff. versions of MessageBox notify
+//MessageBox notify for Xero updates
 
 
-VOID XNotifyUI(PWCHAR pwszStringParam)
+ID XNotifyUI(PWCHAR pwszStringParam)
 {
  if (KeGetCurrentProcessType() != PROC_USER)
  {
@@ -12,14 +12,11 @@ VOID XNotifyUI(PWCHAR pwszStringParam)
  }
  else
   XNotifyDoQueueUI(pwszStringParam); 
+  
 }
 
-
-//==============================================
-
-
-
-
-LPCWSTR Buttons[1] = { L"OK" };
+LPCWSTR Buttons[1] = { L"Update Xero Bypass" }; // Button to redirect to live serv. update
 		while (XShowMessageBoxUI(XUSER_INDEX_ANY, title, msg1, 1, Buttons, 0, XMB_ALERTICON, &g_mb_result, &g_xol) == ERROR_ACCESS_DENIED) Sleep(500);
 		while (!XHasOverlappedIoCompleted(&g_xol)) Sleep(500);
+			
+		}
